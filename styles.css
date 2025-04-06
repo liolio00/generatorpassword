@@ -1,0 +1,250 @@
+:root {
+    --netflix-red: #E50914;
+    --netflix-black: #141414;
+    --netflix-dark: #222222;
+    --netflix-light: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: var(--netflix-black);
+    color: var(--netflix-light);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background-color: var(--netflix-dark);
+    padding: 2rem;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--netflix-red);
+}
+
+.password-display {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+#password {
+    flex: 1;
+    padding: 1rem;
+    font-size: 1.2rem;
+    background-color: var(--netflix-black);
+    border: 2px solid var(--netflix-red);
+    color: var(--netflix-light);
+    border-radius: 5px;
+}
+
+.copy-btn {
+    background-color: var(--netflix-red);
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.copy-btn:hover {
+    transform: scale(1.05);
+}
+
+.copy-btn.copied {
+    animation: copyAnimation 0.5s ease;
+}
+
+@keyframes copyAnimation {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Styles pour le popup de confirmation de copie */
+.copy-popup {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--netflix-red);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 9999;
+}
+
+.copy-popup.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.copy-popup i {
+    font-size: 1.2rem;
+}
+
+.length-control {
+    margin-bottom: 1.5rem;
+}
+
+input[type="range"] {
+    width: 100%;
+    margin: 1rem 0;
+    accent-color: var(--netflix-red);
+}
+
+.options {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: relative;
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    background-color: var(--netflix-black);
+    border: 2px solid var(--netflix-red);
+    margin-right: 12px;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.checkbox-container:hover input~.checkmark {
+    background-color: rgba(229, 9, 20, 0.1);
+}
+
+.checkbox-container input:checked~.checkmark {
+    background-color: var(--netflix-red);
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-container input:checked~.checkmark:after {
+    display: block;
+}
+
+.checkbox-container .checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.special-chars {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.special-chars.hidden {
+    display: none;
+}
+
+.special-chars-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.char-checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    background-color: var(--netflix-black);
+    border: 2px solid var(--netflix-red);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.char-checkbox:hover {
+    background-color: rgba(229, 9, 20, 0.1);
+}
+
+.char-checkbox input {
+    margin-right: 5px;
+}
+
+.generate-btn {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--netflix-red);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.generate-btn:hover {
+    transform: scale(1.02);
+    background-color: #ff0f1a;
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .special-chars-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
