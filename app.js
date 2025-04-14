@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
     splashScreen.id = 'splash-screen';
     splashScreen.innerHTML = `
         <div class="splash-content">
-            <h1>Password Generator</h1>
             <div class="loading-spinner"></div>
         </div>
     `;
