@@ -1,4 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Ajout du Splash Screen
+    const splashScreen = document.createElement('div');
+    splashScreen.id = 'splash-screen';
+    splashScreen.innerHTML = `
+        <div class="splash-content">
+            <h1>Password Generator</h1>
+            <div class="loading-spinner"></div>
+        </div>
+    `;
+    document.body.appendChild(splashScreen);
+
+    // Masquer le Splash Screen après 2 secondes
+    setTimeout(() => {
+        splashScreen.style.opacity = '0';
+        setTimeout(() => {
+            splashScreen.remove();
+        }, 500);
+    }, 2000);
+
     const passwordInput = document.getElementById('password');
     const copyBtn = document.getElementById('copy-btn');
     const generateBtn = document.getElementById('generate');
