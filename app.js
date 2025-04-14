@@ -7,15 +7,15 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="loading-spinner"></div>
         </div>
     `;
-    document.body.appendChild(splashScreen);
+    document.body.insertBefore(splashScreen, document.body.firstChild);
 
-    // Masquer le Splash Screen après 2 secondes
+    // Masquer le Splash Screen après 1 seconde
     setTimeout(() => {
         splashScreen.style.opacity = '0';
         setTimeout(() => {
             splashScreen.remove();
         }, 500);
-    }, 2000);
+    }, 1000);
 
     const passwordInput = document.getElementById('password');
     const copyBtn = document.getElementById('copy-btn');
